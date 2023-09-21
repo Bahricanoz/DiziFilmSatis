@@ -1,0 +1,68 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Personel İsim</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @{ string durum = ""; string buton = ""; string link = ""; string yazı = "";}
+        @foreach(var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Aktif";
+                yazı = "Pasif Yap";
+                buton = "btn btn-outline-danger";
+                link = "/Personel/Pasif";
+            }
+            if(x.Durum == false)
+            {
+                durum = "Pasif";
+                yazı = "Aktif Yap";
+                buton = "btn btn-outline-primary";
+                link = "/Personel/Aktif";
+            }
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Ad  @x.Soyad</td>
+                    <td>@durum</td>
+                    <td>
+                        <a href="@link/@x.Id" class="@buton">@yazı</a>
+                    </td>
+                    <td>
+                        <a href="/Personel/Guncelle/@x.Id" class="btn btn-success">Personel Güncelle</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+<button class="btn btn-group" style="background-color:purple; color:white; margin-top:10px;" data-toggle="modal" data-target="#Modal1">Personel Ekle</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Personel Ekleme Paneli</h3>
+            </div>
+            <form class="form-group" method="post" action="/Personel/Ekle/">
+                <div class="modal-body">
+                    <label>Personel Ad:</label>
+                    <input type="text" name="Ad" value="" class="form-control" required=""/>
+                    <br />
+                    <label>Personel Soyad:</label>
+                    <input type="text" name="Soyad" value="" class="form-control" required="" />
+                    <br />
+                    <button class="btn btn-info">Personel Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

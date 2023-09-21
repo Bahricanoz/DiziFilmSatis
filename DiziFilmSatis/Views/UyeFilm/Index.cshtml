@@ -1,0 +1,37 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Hareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Dizi - Filmlerim</h3>
+</div>
+<table class="table table-striped">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Eser Adı</th>
+        <th>Personel İsim</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+        <th>Detay</th>
+        <th>İşlem</th>
+    </tr>
+    <tbody>
+        @foreach(var x in Model)
+            {
+                <tr>
+                    <td>@x.Tbl_Filmdizi.Ad</td>
+                    <td>@x.Tbl_Personel.Ad @x.Tbl_Personel.Soyad</td>
+                    <td>@Convert.ToDateTime(x.Alistarihi).ToShortDateString()</td>
+                    <td>@Convert.ToDateTime(x.Iadetarihi).ToShortDateString()</td>
+                    <td>
+                        <a href="/UyeFilm/Detay/@x.Tbl_Filmdizi.Id" class="btn btn-success">Dizi - Film Detay</a>
+                    </td>
+                    <td>
+                        <a href="/UyeFilm/Iade/@x.Id" class="btn btn-group" style="background-color:hotpink; color:white;" onclick="return confirm('@x.Tbl_Filmdizi.Ad ürünü iade etmek ister misiniz?')">Dizi - Filmi İade Et</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>

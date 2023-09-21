@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Admin Mesaj Gönderme</h3>
+</div>
+<form method="post" class="form-group">
+    <table class="table table-striped">
+        <tr>
+           <td>
+               <label>İsim</label>
+           </td>
+            <td>
+                <input type="text" name="Name" value="Admin" class="form-control" readonly=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Gönderen Mail:</label>
+            </td>
+            <td>
+                <input type="text" name="Mail" value="admin@gmail.com" readonly="readonly" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Alıcı Mail:</label>
+            </td>
+            <td>
+                <input type="text" name="Alıcı" value="" class="form-control" required="" inputmode="email" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Konu:</label>
+            </td>
+            <td>
+                <input type="text" name="Konu" value="" class="form-control" required=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Mesaj:</label>
+            </td>
+            <td>
+                <textarea name="Mesaj" required="" class="form-control" style="height:125px;"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Tarih:</label>
+            </td>
+            <td>
+                <input type="text" name="Tarih" value="@DateTime.Now.ToShortDateString()" class="form-control" readonly="readonly"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button class="btn btn-group" style="background-color:purple; color:white;">Mesaj Gönder</button>
+            </td>
+        </tr>
+    </table>
+</form>

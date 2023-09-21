@@ -1,0 +1,54 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Hareket>
+@{
+    ViewBag.Title = "islemlerim";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:slateblue;">Geçmiş Dizi - Filmlerim</h3>
+</div>
+<table class="table table-striped">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Dizi - Film Adı</th>
+        <th>Personel İsim</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+        <th>Teslim Tarihi</th>
+        <th>Fiyat</th>
+        <th>Durum</th>
+        <th>Detay</th>
+    </tr>
+    <tbody>
+        @{ string durum = ""; int fiyat = 0 ; }
+        @foreach(var x in Model)
+        {
+            if(x.Teslimtarihi == x.Iadetarihi)
+            {
+                durum = "Zamanında teslim edildi";
+                fiyat = Convert.ToInt16(x.Para);
+            }
+            if(x.Teslimtarihi > x.Iadetarihi)
+            {
+                DateTime d1 = Convert.ToDateTime(x.Iadetarihi);
+                DateTime d2 = Convert.ToDateTime(x.Teslimtarihi);
+                TimeSpan fark = d2 - d1;
+                durum = fark.TotalDays + " gün geç teslim edildi";
+                fiyat = Convert.ToInt16(x.Para) + Convert.ToInt16(15 * fark.TotalDays);
+                
+            }
+                <tr>
+                    <td>@x.Tbl_Filmdizi.Ad</td>
+                    <td>@x.Tbl_Personel.Ad @x.Tbl_Personel.Soyad</td>
+                    <td>@Convert.ToDateTime(x.Alistarihi).ToShortDateString()</td>
+                    <td>@Convert.ToDateTime(x.Iadetarihi).ToShortDateString()</td>
+                    <td>@Convert.ToDateTime(x.Teslimtarihi).ToShortDateString()</td>
+                    <td>@fiyat</td>
+                    <td>@durum</td>
+                    <td>
+                        <a href="/UyeFilm/Detay/@x.Tbl_Filmdizi.Id" class="btn btn-success">Dizi - Film Detay</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>

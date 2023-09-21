@@ -1,0 +1,61 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Mesaj
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Mesaj Detay Sayfası</h3>
+</div>
+<form class="form-group">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <label>İsim:</label>
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Gönderen Mail:</label>
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Alcı:</label>
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Alıcı, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Konu:</label>
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Konu, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Mesaj:</label>
+            </td>
+            <td>
+                @Html.TextAreaFor(x => x.Mesaj, new { @class = "form-control", @readonly = "readonly", @style = "height:125px;" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Tarih:</label>
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+    </table>
+</form>

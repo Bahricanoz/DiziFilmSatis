@@ -1,0 +1,62 @@
+﻿@using DiziFilmSatis.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Tbl_Filmdizi>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Eser Adı</th>
+        <th>Kategori</th>
+        <th>Tür</th>
+        <th>Yönetmen</th>
+        <th>Durum</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    <tbody>
+        @{ string durum = "";}
+        @foreach (var x in Model)
+        {
+            if (x.Durum == true)
+            {
+                durum = "Aktif";
+            }
+            if (x.Durum == false)
+            {
+                durum = "Pasif";
+            }
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Ad</td>
+                <td>@x.Tbl_Kategori.Katad</td>
+                <td>@x.Tbl_Tur.Turad</td>
+                <td>
+                    <a href="/Satis/Yonetmen/@x.Tbl_Yonetmen.Id">@x.Tbl_Yonetmen.Ad @x.Tbl_Yonetmen.Soyad</a>
+                </td>
+                <td>@durum</td>
+                <td>
+                    <a href="/Satis/Guncelle/@x.Id" class="btn btn-success">Eser Güncelle</a>
+                </td>
+                <td>
+                    <a href="/Satis/Detay/@x.Id" class="btn btn-info">Eser Detay</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    {"page-link"}
+})
+
+<div style="margin-top:10px;">
+    <a href="/Satis/Ekle/" class="btn btn-group" style="background-color:purple; color:white;">Eser Ekle</a>
+</div>
+
+

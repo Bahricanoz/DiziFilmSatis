@@ -1,0 +1,26 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Personel
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Personel Güncelleme Sayfası</h3>
+</div>
+@using (Html.BeginForm("Guncelle", "Personel", FormMethod.Post))
+{
+    <div style="margin-top:20px;">
+        <label>Personel Id:</label>
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Personel Adı:</label>
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @required = "required" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Personel Soyadı:</label>
+        @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control", @required = "required" })
+    </div>
+    <div style="margin-top:20px;">
+        <button class="btn btn-info">Personel Güncelle</button>
+    </div>
+}

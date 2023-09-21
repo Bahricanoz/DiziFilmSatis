@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4836eca58ff14d308e792a8ead72b4d9" Name="Diagram1">
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Admin" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Ceza" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Duyurular" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Filmdizi" Width="1.5" PointX="4.375" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Hakkimizda" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Hareket" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Kategori" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Mesaj" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Personel" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Tur" Width="1.5" PointX="1.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Uye" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Db_DiziFilmSatisModel.Tbl_Yonetmen" Width="1.5" PointX="1.5" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Ceza_Tbl_Hareket" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Ceza_Tbl_Uye" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Filmdizi_Tbl_Kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Filmdizi_Tbl_Tur" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Filmdizi_Tbl_Yonetmen" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Hareket_Tbl_Filmdizi" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Hareket_Tbl_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="Db_DiziFilmSatisModel.FK_Tbl_Hareket_Tbl_Uye" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

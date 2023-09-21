@@ -1,0 +1,28 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Duyurular
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:slateblue;">Duyuru Detay Sayfası</h3>
+</div>
+
+<form class="form-group">
+    <div style="margin-top:20px;">
+        <label>Duyuru Id:</label>
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Konu:</label>
+        @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Detay:</label>
+        @Html.TextAreaFor(x => x.Detay, new { @class = "form-control", @readonly = "readonly", @style="height:150px;" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Tarih:</label>
+        @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</form>

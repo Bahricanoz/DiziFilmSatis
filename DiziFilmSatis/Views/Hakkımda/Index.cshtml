@@ -1,0 +1,25 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Hakkimizda
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Hakkımızda Güncelleme Sayfası</h3>
+</div>
+@using (Html.BeginForm("Index", "Hakkımda", FormMethod.Post))
+ {
+    <div style="margin-top:20px;">
+        <label>İçerik 1:</label>
+        @Html.TextAreaFor(x => x.icerik1 , new {@class="form-control", @required="required", @style="height:150px;"})
+    </div>
+    <div style="margin-top:20px;">
+        <label>İçerik 2:</label>
+        @Html.TextAreaFor(x => x.icerik2, new { @class = "form-control", @required = "required", @style = "height:150px;" })
+    </div>            
+    <div style="margin-top:20px;">
+        <button class="btn btn-group" style="background-color:purple; color:white;">Hakkımızda Güncelle</button>
+    </div>                
+                
+ }

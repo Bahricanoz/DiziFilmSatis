@@ -1,0 +1,37 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Hareket
+@{
+    ViewBag.Title = "OduncAl";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Dizi - Film Ödünç Alma</h3>
+</div>
+<form method="post" class="form-group">
+    <table class="table table-striped">
+        <tr>
+            <td><label>Dizi - Film Adı:</label></td>
+            <td>
+                @Html.DropDownListFor(x => x.Tbl_Filmdizi.Id, (List<SelectListItem>)ViewBag.eser, "Lütfen Dizi - Film Seçiniz", new { @class = "form-control", @required = "required" })
+            </td>
+        </tr>
+        <tr>
+            <td><label>Alış Tarihi:</label></td>
+            <td>
+                <input type="text" name="Alistarihi" value="@DateTime.Now.ToShortDateString()" class="form-control" readonly="readonly" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>İade Tarihi:</label></td>
+            <td>
+                <input type="text" name="Iadetarihi" value="@DateTime.Now.AddDays(1).ToShortDateString()" class="form-control" readonly="readonly" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-primary">Dizi - Film Ödünç Al</button>
+            </td>
+        </tr>
+    </table>
+</form>

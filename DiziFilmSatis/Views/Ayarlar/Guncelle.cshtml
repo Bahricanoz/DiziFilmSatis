@@ -1,0 +1,44 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Admin
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Admin Güncelleme Sayfası</h3>
+</div>
+@using (Html.BeginForm("Guncelle","Ayarlar",FormMethod.Post))
+ {
+    <table class="table table-striped">
+        <tr>
+            <td><label>İsim:</label></td>
+            <td>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @required = "required" })
+            </td>
+        </tr>
+        <tr>
+            <td><label>Yetki:</label></td>
+            <td>
+                @Html.TextBoxFor(x => x.Yetki, new { @class = "form-control", @required = "required" })
+            </td>
+        </tr>
+        <tr>
+            <td><label>Kullanıcı Adı:</label></td>
+            <td>
+                @Html.TextBoxFor(x => x.kullaniciadi, new { @class = "form-control", @required = "required" })
+            </td>
+        </tr>
+        <tr>
+            <td><label>Şifre:</label></td>
+            <td>
+                @Html.TextBoxFor(x => x.sifre, new { @class = "form-control", @required = "required" })
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-primary">Admin Güncelle</button>
+            </td>
+        </tr>
+    </table>
+ }

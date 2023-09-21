@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:slateblue;">Üye Ekleme Safası</h3>
+</div>
+<form method="post" class="form-group">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <label>Ad:</label>
+            </td>
+            <td>
+                <input type="text" name="Ad" value=""  class="form-control" required=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Soyad:</label>
+            </td>
+            <td>
+                <input type="text" name="Soyad" value="" class="form-control" required=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Mail:</label>
+            </td>
+            <td>
+                <input type="text" name="Mail" value="" class="form-control" required=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Telefon:</label>
+            </td>
+            <td>
+                <input type="text" name="Telefon" value="" class="form-control" required="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Kullanıcı Adı:</label>
+            </td>
+            <td>
+                <input type="text" name="Kullaniciadi" value="" class="form-control" required=""/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Şifre:</label>
+            </td>
+            <td>
+                <input type="text" name="Sifre" value="" class="form-control" required="" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-primary">Üye Ekle</button>
+            </td>
+        </tr>
+    </table>
+</form>

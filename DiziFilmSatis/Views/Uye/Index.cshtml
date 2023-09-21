@@ -1,0 +1,61 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Uye>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "Uye", FormMethod.Get))
+            {
+                <div style="margin-top:20px;">
+                    <b>Aranacak üye ismi: </b> @Html.TextBox("p")
+                <input type="submit"  value="Ara" />
+                </div>
+        }
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Üye Numara</th>
+        <th>İsim</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    <tbody>
+        @{ string durum = ""; string yazı = ""; string link = ""; string buton="";}
+        @foreach(var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Aktif";
+                yazı = "Pasif Yap";
+                buton = "btn btn-outline-danger";
+                link = "/Uye/Pasif";
+            }
+            if(x.Durum == false)
+            {
+                durum = "Pasif";
+                yazı = "Aktif Yap";
+                buton = "btn btn-outline-primary";
+                link = "/Uye/Aktif";
+
+            }
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Ad @x.Soyad</td>
+                    <td>@durum</td>
+                    <td>
+                        <a href="@link/@x.Id" class="@buton">@yazı</a>
+                    </td>
+                    <td>
+                        <a href="/Uye/Guncelle/@x.Id" class="btn btn-success">Üye Güncelle</a>
+                    </td>
+                    <td>
+                        <a href="/Uye/Detay/@x.Id" class="btn btn-info">Üye Detay</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+<div style="margin-top:10px;">
+    <a href="/Uye/Ekle/" class="btn btn-group" style="background-color:purple; color:white;">Üye Ekle</a>
+</div>

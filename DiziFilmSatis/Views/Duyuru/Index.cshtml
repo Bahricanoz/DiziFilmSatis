@@ -1,0 +1,84 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Duyurular>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Konu</th>
+        <th>Durum</th>
+        <th>Tarih</th>
+        <th>İşlemler</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    <tbody>
+        @{ string durum = "";  string yazi = ""; string link = ""; string buton = "";}
+        @foreach(var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Aktif";
+                yazi = "Pasif Yap";
+                buton = "btn btn-outline-secondary";
+                link = "/Duyuru/Pasif";
+
+            }
+            if (x.Durum == false)
+            {
+                durum = "Pasif";
+                yazi = "Aktif Yap";
+                buton = "btn btn-outline-primary";
+                link = "/Duyuru/Aktif";
+            }
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Baslik</td>
+                    <td>@durum</td>
+                    <td>@Convert.ToDateTime(x.Tarih).ToShortDateString()</td>
+                    <td>
+                        <a href="@link/@x.Id" class="@buton">@yazi</a>
+                        <a href="/Duyuru/Sil/@x.Id" class="btn btn-danger" onclick="return confirm('@x.Id numaralı duyuruyu silmek ister misiniz?')">Duyuru Sil</a>
+                    </td>
+                    <td>
+                        <a href="/Duyuru/Guncelle/@x.Id" class="btn btn-success">Duyuru Düzenle</a>
+                    </td>
+                    <td>
+                        <a href="/Duyuru/Detay/@x.Id"  class="btn btn-group" style="background-color:cadetblue; color:white;">Duyuru Detay</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+
+<div style="margin-top:10px;">
+    <button style="background-color:purple; color:white" class="btn btn-group" data-toggle="modal" data-target="#Modal1">Duyuru Ekle</button>
+</div>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Duyuru Ekleme Paneli</h3>
+            </div>
+            <form method="post" class="form-group" action="/Duyuru/Ekle/">
+                <div class="modal-body">
+                    <label>Konu:</label>
+                    <input name="Baslik" class="form-control" required="" type="text" />
+                    <br />
+                    <label>Detay:</label>
+                    <textarea type="text" name="Detay" value="" class="form-control" required="" style="height:100px;"></textarea>
+                    <br />
+                    <label>Tarih:</label>
+                    <input type="text" name="Tarih" class="form-control" readonly="readonly" value="@DateTime.Now.ToShortDateString()" />
+                    <br />
+                    <button class="btn btn-info">Duyuru Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,86 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Yonetmen>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Yönetmen İsim</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+        <th>Eseleri</th>
+    </tr>
+    <tbody>
+        @{ string durum = ""; string buton = ""; string link = ""; string yazı = "";}
+        @foreach(var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Aktif";
+                yazı = "Pasif Yap";
+                buton = "btn btn-outline-danger";
+                link = "/Yonetmen/Pasif";
+            }
+            if(x.Durum == false)
+            {
+                durum = "Pasif";
+                yazı = "Aktif Yap";
+                buton = "btn btn-outline-primary";
+                link = "/Yonetmen/Aktif";
+
+
+            }
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Ad @x.Soyad</td>
+                <td>@durum</td>
+                <td>
+                    <a href="@link/@x.Id" class="@buton">@yazı</a>
+                </td>
+                <td>
+                    <a href="/Yonetmen/Guncelle/@x.Id" class="btn btn-success">Yönetmen Düzenle</a>
+                </td>
+                <td>
+                    <a href="/Yonetmen/Detay/@x.Id" class="btn btn-info">Yönetmen Detay</a>
+                </td>
+                <td>
+                    <a href="/Yonetmen/Eser/@x.Id" class="btn btn-group" style="background-color:violet; ">Yönetmenin Eserleri</a>
+                </td>
+            </tr>   
+         }
+    </tbody>
+</table>
+<div style="margin-top:10px;">
+    <button href="#" class="btn btn-group" style="background-color:purple; color:white;" data-toggle="modal" data-target="#Modal1">Yönetmen Ekle</button>
+</div>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Yönetmen Ekleme Paneli</h3>
+            </div>
+            <form class="form-group" method="post" action="/Yonetmen/Ekle/">
+                <div class="modal-body">
+                    <label>Yönetmen Adı:</label>
+                    <input type="text" name="Ad" value="" class="form-control"  required=""/>
+                    <br />
+                    <label>Yönetmen Soyadı:</label>
+                    <input type="text" name="Soyad" value="" class="form-control"  required=""/>
+                    <br />
+                    <label>Yönetmen Detay:</label>
+                    <textarea class="form-control" required="" style="height:150px;" name="Detay"></textarea>
+                    <br />
+                    <button class="btn btn-info">Yönetmen Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

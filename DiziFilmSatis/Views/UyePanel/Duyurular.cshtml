@@ -1,0 +1,20 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Duyurular>
+<div class="post">
+    @foreach(var x in Model) {
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="https://i.hizliresim.com/r42jl0p.png" alt="user image">
+            <span class="username">
+                <a href="#">@x.Baslik</a>
+                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+            </span>
+            <span class="description">@Convert.ToDateTime(x.Tarih).ToShortDateString()</span>
+        </div>
+        <!-- /.user-block -->
+        <p>
+            @x.Detay
+        </p>
+        <hr />
+    }
+
+</div>

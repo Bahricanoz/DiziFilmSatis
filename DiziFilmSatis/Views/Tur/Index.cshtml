@@ -1,0 +1,67 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Tur>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Tür</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+        <th>Güncelle</th>
+    </tr> 
+    <tbody>
+        @{ string durum = "";string yazı = ""; string buton=""; string link = "";}
+        @foreach(var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Aktif";
+                yazı = "Pasif Yap";
+                buton = "btn btn-outline-danger";
+                link = "/Tur/Pasif";
+
+            }
+            if(x.Durum== false)
+            {
+                durum = "Pasif";
+                yazı = "Aktif Yap";
+                buton = "btn btn-outline-primary";
+                link = "/Tur/Aktif";
+            }
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Turad</td>
+                    <td>@durum</td>
+                    <td>
+                        <a href="@link/@x.Id" class="@buton">@yazı</a>
+                    </td>
+                    <td>
+                        <a href="/Tur/Guncelle/@x.Id" class="btn btn-success">Tür Güncelle</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+
+<button class="btn btn-group" style="background-color:purple; color:white; margin-top:10px;" data-toggle="modal" data-target="#Modal1" >Tür Ekle</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tür Ekleme Paneli</h3>
+            </div>
+            <form class="form-group" method="post" action="/Tur/Ekle/">
+                <div class="modal-body">
+                    <label>Tür Adı:</label>
+                    <input type="text" name="Turad" class="form-control" required="" />
+                    <br />
+                    <button class="btn btn-info">Tür Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Filmdizi
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Eser Detay Sayfası</h3>
+</div>
+<form class="form-group">
+    <div style="margin-top:20px;">
+        <label>Eser Adı:</label>
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Kategori:</label>
+        @Html.TextBoxFor(x => x.Tbl_Kategori.Katad, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Tür:</label>
+        @Html.TextBoxFor(x => x.Tbl_Tur.Turad, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Yönetmen Adı:</label>
+        @Html.TextBoxFor(x => x.Tbl_Yonetmen.Ad, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Yönetmen Soyad:</label>
+        @Html.TextBoxFor(x => x.Tbl_Yonetmen.Soyad, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Durum:</label>
+        @Html.TextBoxFor(x => x.Durum, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Görsel:</label>
+        @Html.TextBoxFor(x => x.Foto, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Detay:</label>
+        @Html.TextAreaFor(x => x.Detay, new { @class = "form-control", @readonly = "readonly",@style="height:100px" })
+    </div>
+</form>

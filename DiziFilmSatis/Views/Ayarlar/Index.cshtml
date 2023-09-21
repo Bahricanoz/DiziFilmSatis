@@ -1,0 +1,82 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>İsim</th>
+        <th>Kullanıcı Adı</th>
+        <th>Yetki</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @{ string durum = ""; string link = ""; string buton = ""; string yazi= "";}
+        @foreach(var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Aktif";
+                yazi = "Pasif Yap";
+                buton = "btn btn-outline-secondary";
+                link = "/Ayarlar/Pasif";
+            }
+            if(x.Durum == false)
+            {
+                durum = "Pasif";
+                yazi = "Aktif Yap";
+                buton = "btn btn-outline-primary";
+                link = "/Ayarlar/Aktif";
+            }
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Name</td>
+                    <td>@x.kullaniciadi</td>
+                    <td>@x.Yetki</td>
+                    <td>@durum</td>
+                    <td>
+                        <a href="@link/@x.Id" class="@buton">@yazi</a>
+                        <a href="/Ayarlar/Sil/@x.Id" class="btn btn-danger" onclick="return confirm('@x.kullaniciadi kullanıcısını silmek ister misiniz?')">Sil</a>
+                    </td>
+                    <td>
+                        <a href="/Ayarlar/Guncelle/@x.Id" class="btn btn-success">Admin Güncelle</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+<div style="margin-top:10px;">
+    <button class="btn btn-info" data-toggle="modal" data-target="#Modal1">Admin Ekle</button>
+</div>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Admin Ekleme Paneli</h3>
+            </div>
+            <form method="post" action="/Ayarlar/Ekle/">
+                <div class="modal-body">
+                    <label>İsim:</label>
+                    <input type="text" name="Name" value="" required="" class="form-control" />
+                    <br />
+                    <label>Yetki:</label>
+                    <input type="text" name="Yetki" value="" required="" class="form-control" />
+                    <br />
+                    <label>Kullanıcı Adı:</label>
+                    <input type="text" name="kullaniciadi" value="" required="" class="form-control" />
+                    <br />
+                    <label>Şifre:</label>
+                    <input type="text" name="sifre" value="" required="" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Admin Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

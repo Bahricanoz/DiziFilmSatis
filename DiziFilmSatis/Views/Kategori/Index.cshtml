@@ -1,0 +1,65 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Kategori Ad</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @{ string durum = "";}
+        @foreach (var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Aktif";
+            }
+            if(x.Durum == false)
+            {
+                durum = "Pasif";
+            }
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Katad</td>
+                <td>@durum</td>
+                <td>
+                    <a href="/Kategori/Aktif/@x.Id" class="btn btn-outline-primary">Aktif Yap</a>
+                    <a href="/Kategori/Pasif/@x.Id" class="btn btn-outline-danger">Pasif Yap</a>
+
+                </td>
+                <td>
+                    <a href="/Kategori/Guncelle/@x.Id" class="btn btn-success" >Kategori Düzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-group" style="background-color:purple; color:white; margin-top:10px;" data-toggle="modal" data-target="#Modal1">Kategori Ekle</button>
+
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Kategori Ekleme Paneli</h3>
+            </div>
+            <form  action="/Kategori/Ekle/" method="post" class="form-group">
+                <div class="modal-body">
+                    <label>Kategori Ad:</label>
+                    <input type="text" name="Katad" required="" class="form-control"/>
+                    <br />
+                    <button class="btn btn-info">Kategori Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

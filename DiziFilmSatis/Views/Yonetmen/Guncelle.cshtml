@@ -1,0 +1,27 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Yonetmen
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Yönetmen Güncelleme Sayfası</h3>
+</div>
+@using (Html.BeginForm("Guncelle", "Yonetmen", FormMethod.Post))
+{
+    <div style="margin-top:20px;">
+        <label>Yönetmen Adı:</label>
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @required = "required" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Yönetmen Soyad:</label>
+        @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control", @required = "required" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Yönetmen Deaty:</label>
+        @Html.TextAreaFor(x => x.Detay, new { @class = "form-control", @required = "required", @style="height:150px;" })
+    </div>
+    <div style="margin-top:20px;">
+        <button class="btn btn-primary">Yönetmen Güncelle </button>
+    </div>
+}

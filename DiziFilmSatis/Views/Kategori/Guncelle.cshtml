@@ -1,0 +1,24 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Kategori
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Kategori Güncelleme Sayfası</h3>
+</div>
+@using (Html.BeginForm("Guncelle", "Kategori", FormMethod.Post))
+{
+    <div style="margin-top:20px;">
+        <label>Kateogori Id:</label>
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div style="margin-top:20px;">
+        <label>Kateogori Adı:</label>
+        @Html.TextBoxFor(x => x.Katad, new { @class = "form-control", @required = "required" })
+    </div>
+    <div style="margin-top:20px;">
+        <button class="btn btn-primary">Kategori Güncelle</button>
+    </div>
+    
+}

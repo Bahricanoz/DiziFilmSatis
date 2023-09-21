@@ -1,0 +1,31 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Filmdizi>
+@{
+    ViewBag.Title = "Eser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div style="margin-top:10px;">
+    <h3 style="color:slateblue;">@ViewBag.isim Eserleri</h3>
+</div>
+<table style="margin-top:10px;" class="table table-striped">
+    <tr style="background-color:rgb(242,178,22)">
+        <th>Eser Id</th>
+        <th>Kitap Ad</th>
+        <th>Kategori</th>
+        <th>Tür</th>
+        <th>Detay</th>
+    </tr>
+    <tbody>
+        @foreach(var x in Model)
+            {
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Ad</td>
+                    <td>@x.Tbl_Kategori.Katad</td>
+                    <td>@x.Tbl_Tur.Turad</td>
+                    <td>@x.Detay</td>
+                </tr>
+            }
+    </tbody>
+</table>
+

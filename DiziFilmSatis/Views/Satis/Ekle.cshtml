@@ -1,0 +1,38 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Filmdizi
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color:cadetblue;">Dizi - Film Ekleme</h3>
+</div>
+<form method="post" class="form-group" enctype="multipart/form-data">
+    <div style="margin-top:20px;">
+        <label>Eser Adı:</label>
+        <input type="text" name="Ad" value="" class="form-control" required=""/>
+    </div>
+    <div style="margin-top:20px;">
+        <label>Kategori:</label>
+        @Html.DropDownListFor(x=>x.Tbl_Kategori.Id, (List<SelectListItem>)ViewBag.kat,"Lütfen Kategori Seçiniz" ,new {@class="form-control",@required="required"})
+    </div>
+    <div style="margin-top:20px;">
+        <label>Tür:</label>
+        @Html.DropDownListFor(x=>x.Tbl_Tur.Id, (List<SelectListItem>)ViewBag.tur,"Lütfen Tür Seçiniz", new {@class="form-control", @required="required"})
+    </div>
+    <div style="margin-top:20px;">
+        <label>Yönetmen:</label>
+        @Html.DropDownListFor(x=>x.Tbl_Yonetmen.Id, (List<SelectListItem>)ViewBag.yonet,"Lütfen Yönetmen Seçiniz", new {@class="form-control",@required="required"})
+    </div>
+    <div style="margin-top:20px;">
+        <label>Görsel:</label>
+        <input type="text" name="Foto" value="" required="" class="form-control"/>
+    </div>
+    <div style="margin-top:20px;">
+        <label>Detay:</label>
+        <textarea class="form-control" required="" style="height:125px;" name="Detay"></textarea>
+    </div>
+    <div style="margin-top:20px;">
+        <button class="btn btn-primary">Dizi-Film Ekle</button>
+    </div>
+</form>

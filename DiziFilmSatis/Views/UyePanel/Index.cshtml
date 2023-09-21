@@ -1,0 +1,205 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Uye
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Profil</h1>
+            </div>
+            
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+
+                <!-- Profile Image -->
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="@ViewBag.foto"
+                                 alt="User profile picture">
+                        </div>
+
+                        <h3 class="profile-username text-center">@ViewBag.ad @ViewBag.soyad</h3>
+
+                        <p class="text-muted text-center">@ViewBag.egitim</p>
+
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>Duyurular</b> <a class="float-right">@ViewBag.duyuru</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Dizi - Filmlerim</b> <a class="float-right">@ViewBag.odunc</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Mesajlar</b> <a class="float-right">@ViewBag.mesaj</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Toplam Harcama</b> <a class="float-right">@ViewBag.fiyat</a>
+                            </li>
+                        </ul>
+
+                        <a href="/Uyemesaj/Index" class="btn btn-primary btn-block"><b>Gelen Kutusu</b></a>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <!-- About Me Box -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Hakkımda</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <strong><i class="fas fa-book mr-1"></i> Eğitim</strong>
+
+                        <p class="text-muted">
+                           @ViewBag.egitim
+                        </p>
+
+                        <hr>
+
+                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Telefon</strong>
+
+                        <p class="text-muted">@ViewBag.telefon</p>
+
+                        <hr>
+
+                        <strong><i class="fas fa-pencil-alt mr-1"></i> Yaş</strong>
+
+                        <p class="text-muted">
+                            @ViewBag.yas
+                        </p>
+
+                        <hr>
+
+                        <strong><i class="far fa-file-alt mr-1"></i> Detay</strong>
+
+                        <p class="text-muted">@ViewBag.detay</p>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Duyurular</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ayarlar</a></li>
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                <!-- Post -->
+                                @Html.Action("Duyurular")
+                                <!-- /.post -->
+                                <!-- Post -->
+                                
+                                <!-- /.post -->
+                                <!-- Post -->
+                                
+                                <!-- /.post -->
+                            </div>
+                            <!-- /.tab-pane -->
+                            
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="settings">
+                                @using (Html.BeginForm("Guncelle", "UyePanel", FormMethod.Post)) { 
+                                <form class="form-horizontal">
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Ad:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail" class="col-sm-2 col-form-label">Soyad:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Mail:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Telefon:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Eğitim:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Egitim, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Yaş:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Yas, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Görsel:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Foto, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Detay:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextAreaFor(x => x.Detay, new { @class = "form-control", @required = "required", @style="height:125px;" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputExperience" class="col-sm-2 col-form-label">Kullanıcı Adı:</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Kullaniciadi, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSkills" class="col-sm-2 col-form-label">Şifre</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                }
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>

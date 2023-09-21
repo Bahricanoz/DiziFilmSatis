@@ -1,0 +1,46 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Hareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Üye İsim</th>
+        <th>Eser</th>
+        <th>Personel İsim</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+        <th>Durum</th>
+        <th>İşlem</th>
+    </tr>
+    <tbody>
+        @{ string durum = "";}
+        @foreach(var x in Model)
+        {
+            if(x.Durum == true)
+            {
+                durum = "Teslim Alındı";
+            }
+            if(x.Durum == false)
+            {
+                durum = "Teslim alınmadı";
+            }
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Tbl_Uye.Ad @x.Tbl_Uye.Soyad</td>
+                    <td>@x.Tbl_Filmdizi.Ad</td>
+                    <td>@x.Tbl_Personel.Ad @x.Tbl_Personel.Soyad</td>
+                    <td>@Convert.ToDateTime(x.Alistarihi).ToShortDateString()</td>
+                    <td>@Convert.ToDateTime(x.Iadetarihi).ToShortDateString()</td>
+                    <td>@durum</td>
+                    <td>
+                        <a href="/OduncAl/Teslimal/@x.Id" class="btn btn-group" style="background-color:plum; color:white;" onclick="return confirm('@x.Tbl_Uye.Ad @x.Tbl_Uye.Soyad isimli üyenin @x.Tbl_Filmdizi.Ad dizi-filmi iade etmek istiyor musunuz?')">İade Et</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+

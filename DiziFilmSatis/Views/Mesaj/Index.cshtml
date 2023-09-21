@@ -1,0 +1,35 @@
+﻿@using DiziFilmSatis.Models.Entity
+@model List<Tbl_Mesaj>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-striped" style="margin-top:10px;">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Gönderen</th>
+        <th>Alıcı</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>Detay</th>
+    </tr>
+    <tbody>
+        @foreach(var x in Model)
+            {
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Mail</td>
+                    <td>@x.Alıcı</td>
+                    <td>@Convert.ToDateTime(x.Tarih).ToShortDateString()</td>
+                    <td>
+                        <a href="/Mesaj/Sil/@x.Id" class="btn btn-danger" onclick="return confirm('@x.Id numralı mesajı silmek ister misiniz?')">Mesaj Sil</a>
+                    </td>
+                    <td>
+                        <a href="/Mesaj/Detay/@x.Id" class="btn btn-success">Mesaj Detay</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+

@@ -1,0 +1,49 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Yonetmen
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div style="margin-top:10px;">
+    <h3 style="color:cadetblue;">
+        Yönetmen Detay Sayfası
+    </h3>
+</div>
+<form class="form-group">
+    <table class="table table-striped">
+        <tr>
+            <td><label>Ad:</label></td>
+            <td>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Soyad:</label>
+            </td>
+            <td>
+                
+                @Html.TextBoxFor(x => x.Soyad, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    Durum:
+                </label>
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Durum, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Detay:
+            </td>
+            <td>
+                @Html.TextAreaFor(x=>x.Detay, new { @class = "form-control", @readonly = "readonly" , @style="height:100px;"})
+            </td>
+        </tr>
+    </table>
+</form>

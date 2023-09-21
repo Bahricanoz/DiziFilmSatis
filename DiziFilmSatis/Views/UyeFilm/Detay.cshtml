@@ -1,0 +1,51 @@
+﻿@model DiziFilmSatis.Models.Entity.Tbl_Filmdizi
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+<div style="margin-top:20px;">
+    <h3 style="color: cadetblue;">Dizi - Film Detay Sayfası</h3>
+</div>
+<form class="form-group">
+    <table class="table table-striped">
+        <tr>
+            <td>Dizi - Film Adı:</td>
+            <td>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>Kategori:</td>
+            <td>
+                @Html.TextBoxFor(x => x.Tbl_Kategori.Katad, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>Tür:</td>
+            <td>
+                @Html.TextBoxFor(x => x.Tbl_Tur.Turad, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>Yönetmen Adı:</td>
+            <td>
+                @*@Html.TextBoxFor(x => x.Tbl_Yonetmen.Ad, new { @class = "form-control", @required = "required" })*@
+                <input type="text"  value="@ViewBag.yonet" class="form-control" readonly="readonly" />
+            </td>
+        </tr>
+        
+        <tr>
+            <td>Görsel:</td>
+            <td>
+                <img src="@ViewBag.foto" alt="Alternate Text" style="height:300px; width:400px;"  />
+            </td>
+        </tr>
+        <tr>
+            <td>Detay:</td>
+            <td>
+                @Html.TextAreaFor(x => x.Detay, new { @class = "form-control", @readonly = "readonly", @style = "height:125px" })
+            </td>
+        </tr>
+    </table>
+</form>
